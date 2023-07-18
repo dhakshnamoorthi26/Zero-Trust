@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+                <title>Enter OTP</title>
+
+                <style type="text/css">
+                  body {
+
+                    background-color: #f2f2f2;
+
+                    font-family: Arial, sans-serif;
+
+                    font-size: 16px;
+
+                  }
+
+
+
+                  .container {
+
+                    max-width: 800px;
+
+                    margin: 0 auto;
+
+                    display: flex;
+
+                    flex-direction: row;
+
+                    justify-content: center;
+
+                    align-items: center;
+
+                    height: 100vh;
+
+                  }
+
+
+
+                  .box {
+
+                    width: 60px;
+
+                    height: 60px;
+
+                    margin-right: 10px;
+
+                    border: 2px solid #ddd;
+
+                    text-align: center;
+
+                    font-size: 28px;
+
+                    font-weight: bold;
+
+                    background-color: #fff;
+
+                    border-radius: 10px;
+
+                  }
+
+
+
+                  .box:focus {
+
+                    outline: none;
+
+                    border-color: #4CAF50;
+
+                  }
+
+
+
+                  .box:last-child {
+
+                    margin-right: 0;
+
+                  }
+
+
+
+                  .btn {
+
+                    background-color: #4CAF50;
+
+                    color: white;
+
+                    border: none;
+
+                    padding: 10px 20px;
+
+                    text-align: center;
+
+                    text-decoration: none;
+
+                    display: inline-block;
+
+                    font-size: 16px;
+
+                    margin-top: 20px;
+
+                    cursor: pointer;
+
+                    border-radius: 5px;
+
+                    box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+
+                  }
+
+
+
+                  .btn:hover {
+
+                    background-color: #3e8e41;
+
+                  }
+
+                  .otp-container {
+
+                                  display: flex;
+
+                                  flex-direction: row;
+
+                                  justify-content: center;
+
+                                  align-items: center;
+
+                  }
+
+
+
+                  .otp-box {
+
+                                  width: 40px;
+
+                                  height: 40px;
+
+                                  font-size: 24px;
+
+                                  text-align: center;
+
+                                  margin: 0 5px;
+
+                                  border: 1px solid #ccc;
+
+                                  border-radius: 5px;
+
+                  }
+
+
+
+                  /* Body styles */
+
+                  body {
+
+                    font-family: Arial, sans-serif;
+
+                    background-color: #f4f4f4;
+
+                  }
+
+
+
+                  /* Main header styles */
+
+                  h1 {
+
+                    text-align: center;
+
+                    color: #333;
+
+                    margin-top: 50px;
+
+                  }
+
+
+
+                  /* Paragraph styles */
+
+                  p {
+
+                    text-align: center;
+
+                    font-size: 18px;
+
+                    color: #666;
+
+                  }
+
+
+
+                  /* OTP container styles */
+
+                  .otp-container {
+
+                    display: flex;
+
+                    justify-content: center;
+
+                    margin-top: 50px;
+
+                  }
+
+
+
+                  /* OTP input box styles */
+
+                  .otp-box {
+
+                    width: 50px;
+
+                    height: 50px;
+
+                    font-size: 30px;
+
+                    text-align: center;
+
+                    margin: 0 10px;
+
+                    border: 2px solid #ccc;
+
+                    border-radius: 5px;
+
+                    outline: none;
+
+                  }
+
+
+
+                  /* OTP input box focus styles */
+
+                  .otp-box:focus {
+
+                    border: 2px solid #0066cc;
+
+                  }
+
+
+
+                  /* Submit button styles */
+
+                  .submit-btn {
+
+                    display: block;
+
+                    margin: 30px auto;
+
+                    padding: 10px 20px;
+
+                    font-size: 20px;
+
+                    color: #fff;
+
+                    background-color: #0066cc;
+
+                    border: none;
+
+                    border-radius: 5px;
+
+                    cursor: pointer;
+
+                  }
+
+
+
+                  /* Submit button hover styles */
+
+                  .submit-btn:hover {
+
+                    background-color: #004080;
+
+                  }
+                </style>
+
+                <link rel="stylesheet" type="text/css" href="style.css">
+
+</head>
+
+<body>
+
+                <h1>Enter OTP</h1>
+
+                <p>Please enter the 6 digit OTP sent to your email id</p>
+
+                <form onsubmit="return OTPfunction()" action="/qr">
+
+                                <div class="otp-container">
+
+                                                <input type="text" class="otp-box" maxlength="1" pattern="[0-9]{1}" required>
+
+                                                <input type="text" class="otp-box" maxlength="1" pattern="[0-9]{1}" required>
+
+                                                <input type="text" class="otp-box" maxlength="1" pattern="[0-9]{1}" required>
+
+                                                <input type="text" class="otp-box" maxlength="1" pattern="[0-9]{1}" required>
+
+                                                <input type="text" class="otp-box" maxlength="1" pattern="[0-9]{1}" required>
+
+                                                <input type="text" class="otp-box" maxlength="1" pattern="[0-9]{1}" required>
+
+                                </div>
+
+                                <br>
+
+                                <button type="submit" class="submit-btn">Verify OTP</button>
+
+                </form>
+
+</body>
+
+</html>
+
+<script type="text/javascript">
+
+  // Generate a random OTP
+function generateOTP() {
+  let digits = '0123456789';
+  let OTP = '';
+  for (let i = 0; i < 6; i++) {
+    OTP += digits[Math.floor(Math.random() * 10)];
+  }
+  return OTP;
+}
+
+// Send OTP via email
+function sendOTP(email, OTP) {
+  // use a server-side code to send email
+  // for example, using Node.js and nodemailer library
+  const nodemailer = require('nodemailer');
+  const transporter = nodemailer.createTransport({
+    service: 'gmail',
+    auth: {
+      user: 'skriti.joseph@gmail.com',
+      pass: 'poseydo5913'
+    }
+  });
+  const mailOptions = {
+    from: 'grofis.togma@gmail.com',
+    to: email,
+    subject: 'OTP Verification',
+    text: `Your OTP is ${OTP}`
+  };
+  transporter.sendMail(mailOptions, function(error, info){
+    if (error) {
+      console.log(error);
+    } else {
+      console.log('Email sent: ' + info.response);
+    }
+  });
+}
+
+// Verify the OTP
+function verifyOTP(inputOTP, actualOTP) {
+  if (inputOTP === actualOTP) {
+    return true;
+  } else {
+    return false;
+  }
+}
+
+function OTPfunction(){
+  // Usage example
+  const email = 'dhakshanamoorthi.g2020@vitstudent.ac.in';
+  const  OTP = generateOTP();
+  sendOTP(email, OTP);
+
+  // assume the user inputs the OTP received via email
+  const inputOTP = document.getElementById("otp");
+  const isVerified = verifyOTP(inputOTP, OTP);
+  if (isVerified) {
+    return true;
+  } else {
+    return false;
+  }
+}
+
+</script>

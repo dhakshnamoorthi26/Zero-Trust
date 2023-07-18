@@ -1,0 +1,20 @@
+{
+  "name": "hospital",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.20.2",
+    "ejs": "^3.1.8",
+    "express": "^4.18.2",
+    "html2pdf.js": "^0.10.1",
+    "lodash": "^4.17.21",
+    "mongoose": "^7.0.0",
+    "nodemailer": "^6.9.1"
+  }
+}

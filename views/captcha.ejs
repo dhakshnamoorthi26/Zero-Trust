@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+    <link rel="stylesheet" href="style2.css">
+
+    <link href="https://fonts.googleapis.com/css?family=Ubuntu" rel="stylesheet">
+
+    <link rel="stylesheet" href="path/to/font-awesome/css/fontawesome.min.css">
+
+
+
+    <title>Captcha</title>
+
+</head>
+
+<body>
+
+    <div class="container">
+
+        <div class="row">
+
+            <div style="width: 40%; margin: 25px auto;">
+
+                <h3 style="text-align: center;">Login Page</h3>
+
+                <form onsubmit="return validcap();" action="/postcaptcha"> <!-- added onsubmit to call validcap() function -->
+
+                    <label>Enter Captcha:</label>
+
+                    <div class="form-row">
+
+                        <div class="form-group col-md-6">
+
+                            <input type="text" class="form-control" readonly id="capt">
+
+                        </div>
+
+                        <div class="form-group col-md-6">
+
+                            <input type="text" class="form-control" id="textinput">
+
+                        </div>
+
+                    </div>
+
+                    <div class="form-group">
+
+                        <button type="submit" class="btn btn-lg btn-success btn-block">Submit</button>
+
+                    </div>
+
+                </form>
+
+                <img src="data:image/png;base64,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" height="20px" width="20px" onclick="cap()">
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+
+    <script type="text/javascript">
+
+        function cap() {
+
+            var alpha = ['A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V',
+
+                         'W','X','Y','Z','1','2','3','4','5','6','7','8','9','0','a','b','c','d','e','f','g','h','i',
+
+                         'j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z','!','@','#','$','%','^','&','*','+'];
+
+            var a = alpha[Math.floor(Math.random()*71)];
+
+            var b = alpha[Math.floor(Math.random()*71)];
+
+            var c = alpha[Math.floor(Math.random()*71)];
+
+            var d = alpha[Math.floor(Math.random()*71)];
+
+            var e = alpha[Math.floor(Math.random()*71)];
+
+            var f = alpha[Math.floor(Math.random()*71)];
+
+            var final = a+b+c+d+e+f;
+
+            document.getElementById("capt").value=final;
+
+        }
+
+
+
+        function validcap() {
+
+  var stg1 = document.getElementById('capt').value;
+
+  var stg2 = document.getElementById('textinput').value;
+
+  if (stg2 === '') {
+
+    alert("Please enter captcha");
+
+    return false;
+
+  } else if (stg1 == stg2) {
+
+    return true;
+
+  } else {
+
+    alert("Captcha is incorrect, try again");
+
+    return false;
+
+  }
+
+}
+
+
+
+
+
+        </script>
+
+        </body>
